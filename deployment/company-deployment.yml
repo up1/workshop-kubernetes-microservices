@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: company
+  labels:
+    app: company
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: company
+  template:
+    metadata:
+      labels:
+        app: company
+    spec:
+      containers:
+        - name: company
+          image: somkiat/company-service
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MONGO_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: mongodb
+                  key: database-name
+            - name: MONGO_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb
+                  key: database-user
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb
+                  key: database-password

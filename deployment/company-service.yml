@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: company
+  labels:
+    app: company
+spec:
+  type: NodePort
+  ports:
+    - name: company-http
+      port: 8080
+      targetPort: 8080
+      nodePort: 31000
+      protocol: TCP
+  selector:
+    app: company

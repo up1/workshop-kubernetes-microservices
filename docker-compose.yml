@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  company-service:
+    image: somkiat/company-service
+    build: ./company-service
+  department-service:
+    image: somkiat/department-service
+    build: ./department-service
