@@ -53,18 +53,12 @@ $cd deployment
 $kubectl create -f ingress.yml
 
 $kubectl get ingress
+
+NAME                HOSTS     ADDRESS          PORTS     AGE
+gateway-ingress     *         35.244.231.86    80        37m
 ```
 
-## Step 6 :: Testing with ingress
 
-Edit file /etc/hosts
 
-```
-<your host ip> demo.service.cc
-```
 
-Call service via curl
 
-```
-$curl http://demo.service.cc
-```
